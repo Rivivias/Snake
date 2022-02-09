@@ -55,6 +55,16 @@ class Snake:
         for i in range(1,len(self.squares)):
             if self.squares[i].xcor()>self.squares[0].xcor()-10 and self.squares[i].xcor()<self.squares[0].xcor()+10 and  self.squares[i].ycor()>self.squares[0].ycor()-10 and self.squares[i].ycor()<self.squares[0].ycor()+10:
                 return False
-            if self.squares[0].xcor()>290 or self.squares[0].xcor()<-290 or self.squares[0].ycor()>290 or self.squares[0].ycor()<-290:
-                return False
+        if self.squares[0].xcor()>290:
+            self.squares[0].goto(-290,self.squares[0].ycor())
+            return True
+        elif  self.squares[0].xcor()<-290 :
+            self.squares[0].goto(290,self.squares[0].ycor())
+            return True
+        elif self.squares[0].ycor()>290 :
+            self.squares[0].goto(self.squares[0].xcor(),-290)
+            return True
+        elif  self.squares[0].ycor()<-290:
+            self.squares[0].goto(self.squares[0].xcor(),290)
+            return True
         return True
